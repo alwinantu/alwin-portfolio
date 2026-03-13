@@ -1,0 +1,366 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>contact · simple page</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f0f4f8;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* header & footer styles (consistent with contact card) */
+    .site-header {
+      background: white;
+      padding: 1.2rem 2rem;
+      box-shadow: 0 2px 10px rgba(0,10,30,0.05);
+      border-bottom: 1px solid #d9e2ec;
+    }
+
+    .header-container {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .logo-area {
+      font-size: 1.8rem;
+      font-weight: 600;
+      background: linear-gradient(145deg, #1e3c72, #2b5876);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #1e3a5f;
+      font-weight: 500;
+      font-size: 1.1rem;
+      padding-bottom: 0.2rem;
+      border-bottom: 2px solid transparent;
+      transition: border-color 0.2s;
+    }
+
+    .nav-links a:hover {
+      border-bottom-color: #2b5876;
+    }
+
+    /* main content: centers the contact card */
+    .main-content {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1.5rem;
+    }
+
+    .contact-card {
+      max-width: 750px;
+      width: 100%;
+      background: white;
+      border-radius: 2.2rem;
+      box-shadow: 0 20px 35px -10px rgba(0, 10, 30, 0.15);
+      padding: 2.8rem 2.8rem 3rem 2.8rem;
+      transition: all 0.2s;
+      border: 1px solid #ffffff80;
+    }
+
+    .contact-header h1 {
+      font-size: 2.8rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: #0a1a2b;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .contact-header h1 span {
+      background: #e2eaf2;
+      color: #1f3b5c;
+      font-size: 1.1rem;
+      font-weight: 450;
+      padding: 0.3rem 1rem;
+      border-radius: 40px;
+    }
+
+    .contact-header .intro {
+      font-size: 1.2rem;
+      color: #3b4e62;
+      margin-top: 0.2rem;
+      margin-bottom: 2.5rem;
+      padding-left: 0.5rem;
+      border-left: 4px solid #b4c8da;
+      padding-left: 1.2rem;
+    }
+
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin: 1.8rem 0 1.5rem;
+    }
+
+    .contact-info {
+      flex: 1 1 200px;
+      background: #f9fcff;
+      border-radius: 1.5rem;
+      padding: 1.8rem 1.6rem;
+    }
+
+    .contact-info h2 {
+      font-size: 1.3rem;
+      font-weight: 550;
+      color: #1d3a5c;
+      margin-bottom: 1.3rem;
+      letter-spacing: -0.01em;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .info-item {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 1.2rem;
+      color: #23415c;
+      font-size: 1.1rem;
+    }
+
+    .info-item .emoji {
+      font-size: 1.5rem;
+      min-width: 2rem;
+      text-align: center;
+      filter: drop-shadow(0 2px 2px #d6e2ec);
+    }
+
+    .info-item a {
+      color: #1a3d6e;
+      text-decoration: none;
+      border-bottom: 1px solid #aac2db;
+    }
+
+    .info-item a:hover {
+      color: #0b1f36;
+      border-bottom: 2px solid #1a3d6e;
+    }
+
+    .contact-form {
+      flex: 2 1 300px;
+      background: #ffffff;
+      border-radius: 1.5rem;
+      padding: 1.8rem 1.6rem;
+      border: 1px solid #e9f0f6;
+    }
+
+    .contact-form h2 {
+      font-size: 1.3rem;
+      font-weight: 550;
+      color: #1d3a5c;
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.4rem;
+    }
+
+    label {
+      font-size: 0.95rem;
+      font-weight: 480;
+      color: #2b4d6f;
+      display: block;
+      margin-bottom: 0.4rem;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 0.9rem 1rem;
+      font-size: 1rem;
+      font-family: inherit;
+      background: #f4fafd;
+      border: 1.5px solid #d7e3ec;
+      border-radius: 1.2rem;
+      outline: none;
+      transition: 0.15s;
+    }
+
+    input:focus, textarea:focus {
+      border-color: #7b9fc7;
+      background: #ffffff;
+      box-shadow: 0 0 0 4px #e0edf9;
+    }
+
+    textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    .submit-btn {
+      background: #1d3a5c;
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+      font-weight: 500;
+      border-radius: 2rem;
+      cursor: pointer;
+      transition: 0.15s;
+      width: 100%;
+      letter-spacing: 0.3px;
+      margin-top: 0.5rem;
+      box-shadow: 0 8px 18px -8px #1d3a5c70;
+    }
+
+    .submit-btn:hover {
+      background: #0e2a45;
+      transform: scale(1.01);
+    }
+
+    /* simple footer */
+    .site-footer {
+      background: white;
+      padding: 1.5rem 2rem;
+      border-top: 1px solid #d4e0ec;
+      margin-top: auto;
+    }
+
+    .footer-container {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      color: #2a4a6e;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .footer-links a {
+      color: #1e3c72;
+      text-decoration: none;
+      font-size: 0.95rem;
+      border-bottom: 1px dotted transparent;
+    }
+
+    .footer-links a:hover {
+      border-bottom-color: #1e3c72;
+    }
+
+    .copyright {
+      font-size: 0.9rem;
+      color: #4d627a;
+    }
+
+    /* tiny responsive */
+    @media (max-width: 550px) {
+      .contact-header h1 {
+        font-size: 2.2rem;
+      }
+      .header-container, .footer-container {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- header with navigation -->
+  <header class="site-header">
+    <div class="header-container">
+      <span class="logo-area">Alwin Antu</span>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+         <a href="education.html">Education</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- main content: contact card exactly as before, now inside main -->
+  <main class="main-content">
+    <div class="contact-card">
+      <div class="contact-header">
+        <h1>
+          contact us
+          <span></span>
+        </h1>
+        <div class="intro">
+          just a simple way to reach out — no robots, just people.
+        </div>
+      </div>
+
+      <!-- contact info + form side by side -->
+      <div class="contact-row">
+        <!-- left: direct contact details -->
+        <div class="contact-info">
+          <h2> Contact</h2>
+          <div class="info-item">
+            <span class="emoji"></span>
+            <a href="mailto:hello@simple.contact">alwin@mai.coom</a>
+          </div>
+          <div class="info-item">
+            <span class="emoji"></span>
+            <span>+8089808173</span>
+          </div>
+          <div class="info-item">
+            <span class="emoji"></span>
+            
+          </div>
+        </div>
+
+        <!-- right: contact form -->
+        <div class="contact-form">
+          <h2> send a note</h2>
+          <form action="#" method="post">
+            <div class="form-group">
+              <label for="name">your name</label>
+              <input type="text" id="name" name="name" placeholder="e.g. abc" required>
+            </div>
+            <div class="form-group">
+              <label for="email">email</label>
+              <input type="email" id="email" name="email" placeholder="abc@example.com" required>
+            </div>
+            <div class="form-group">
+              <label for="message">message</label>
+              <textarea id="message" name="message" placeholder="what would you like to say?"></textarea>
+            </div>
+            
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  
+</body>
+</html>

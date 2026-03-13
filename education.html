@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Education · path & moments</title>
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f4f9ff;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.5;
+      color: #0b2545;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* header (matching previous style) */
+    .site-header {
+      background: white;
+      padding: 1.2rem 2rem;
+      box-shadow: 0 2px 12px rgba(0,20,40,0.03);
+      border-bottom: 1px solid #dae4f0;
+    }
+
+    .header-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .logo-area {
+      font-size: 1.9rem;
+      font-weight: 700;
+      background: linear-gradient(145deg, #1e3c72, #2b5876);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.2rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #1f3f60;
+      font-weight: 500;
+      font-size: 1.1rem;
+      border-bottom: 2px solid transparent;
+      transition: border-color 0.2s;
+      padding-bottom: 0.2rem;
+    }
+
+    .nav-links a:hover {
+      border-bottom-color: #2b5876;
+    }
+
+    /* main container */
+    .main-content {
+      flex: 1;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2.5rem 2rem;
+      width: 100%;
+    }
+
+    /* story / journey section – this is the core education page */
+    .story-section {
+      background: #ffffffdd;
+      backdrop-filter: blur(2px);
+      border-radius: 3rem;
+      padding: 3rem 2.5rem;
+      box-shadow: 0 25px 40px -20px rgba(0,25,50,0.2);
+      border: 1px solid rgba(255,255,255,0.7);
+    }
+
+    .story-section h2 {
+      font-size: 2.4rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: #0a1e33;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      border-bottom: 3px solid #cbdbe9;
+      padding-bottom: 0.8rem;
+    }
+
+    .story-section h2 i {
+      color: #1e3c72;
+      font-size: 2.2rem;
+    }
+
+    .journey-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+      margin-top: 1.5rem;
+    }
+
+    .journey-card {
+      background: white;
+      border-radius: 2.2rem;
+      padding: 2.2rem 1.8rem;
+      box-shadow: 0 12px 24px -10px rgba(27, 50, 80, 0.12);
+      transition: transform 0.2s ease, box-shadow 0.2s;
+      border: 1px solid #eaf1fa;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .journey-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 28px 35px -14px rgba(19, 47, 80, 0.18);
+      border-color: #c9ddef;
+    }
+
+    .year {
+      background: #e3effa;
+      color: #113355;
+      font-weight: 650;
+      font-size: 1.2rem;
+      padding: 0.3rem 1.2rem;
+      border-radius: 40px;
+      display: inline-block;
+      align-self: flex-start;
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.3px;
+      border: 1px solid #b6d0e8;
+    }
+
+    .journey-card h3 {
+      font-size: 1.9rem;
+      font-weight: 620;
+      margin-bottom: 0.6rem;
+      color: #0b2545;
+      line-height: 1.2;
+    }
+
+    .journey-card p {
+      color: #2b4159;
+      font-size: 1.1rem;
+      margin-top: 0.3rem;
+      border-left: 3px solid #aec9e5;
+      padding-left: 1rem;
+    }
+
+    /* optional extra description / highlight */
+    .note-box {
+      margin-top: 3rem;
+      background: #e6f0fa;
+      border-radius: 2rem;
+      padding: 1.3rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      color: #1f3e60;
+      font-weight: 500;
+    }
+
+    .note-box i {
+      font-size: 2rem;
+      color: #2a5f8a;
+    }
+
+    /* footer */
+    .site-footer {
+      background: white;
+      padding: 1.5rem 2rem;
+      border-top: 1px solid #cfddee;
+      margin-top: auto;
+    }
+
+    .footer-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      color: #2e4b6f;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .footer-links a {
+      color: #1e3c72;
+      text-decoration: none;
+      font-size: 0.95rem;
+      border-bottom: 1px dotted transparent;
+    }
+
+    .footer-links a:hover {
+      border-bottom-color: #1e3c72;
+    }
+
+    .copyright {
+      font-size: 0.95rem;
+      color: #456181;
+    }
+
+    @media (max-width: 550px) {
+      .story-section {
+        padding: 2rem 1.2rem;
+      }
+      .story-section h2 {
+        font-size: 1.9rem;
+      }
+      .journey-card h3 {
+        font-size: 1.6rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- header with navigation (consistent with contact / home) -->
+  <header class="site-header">
+    <div class="header-container">
+      <span class="logo-area">Alwin</span>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="education.html">Education</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- main content: education / journey page -->
+  <main class="main-content">
+    <!-- exactly the story / journey block you provided, enhanced with icons & extra card details -->
+    <div class="story-section">
+      <h2>
+        <i class="fas fa-timeline"></i> path & moments
+      </h2>
+      <div class="journey-grid">
+        <!-- card 1: 10th -->
+        <div class="journey-card">
+          <div class="year">2020</div>
+          <h3>Complete 10th</h3>
+          <p>Studied at St. Joseph's H.S.S Kidangoor.</p>
+        </div>
+        <!-- card 2: 12th -->
+        <div class="journey-card">
+          <div class="year">2020 – 2022</div>
+          <h3>Complete 12th</h3>
+          <p>Studied at St. Joseph's H.S.S Chengal.</p>
+        </div>
+        <!-- card 3: current studies -->
+        <div class="journey-card">
+          <div class="year">2022 – now</div>
+          <h3>Studying</h3>
+          <p>at DIST College.</p>
+        </div>
+      </div>
+  
+  <!-- footer with simple links -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="copyright">
+       
+      </div>
+      <div class="footer-links">
+        <a href="#"><i class="fab fa-github"></i> github</a>
+        <a href="#"><i class="fab fa-linkedin"></i> linkedin</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
